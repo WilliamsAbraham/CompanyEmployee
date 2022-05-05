@@ -21,7 +21,7 @@ namespace LoggerService
             throw new NotImplementedException();
         }
 
-        public void LogErrr(string message)
+        public void LogError(string message)
         {
             logger.Error(message);
             throw new NotImplementedException();

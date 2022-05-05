@@ -33,6 +33,7 @@ namespace CompanyEmployee.Extensions
             services.AddDbContext<RepositoryContext>(opts =>
             opts.UseMySql(configuration.GetConnectionString("SqlConnection"), b => b.MigrationsAssembly("CompanyEmployee")));
 
+
     }
 
     

@@ -26,9 +26,11 @@ namespace CompanyEmployee
             
             services.ConfigureCors();
             services.ConfigureIISIntegration();
-            services.AddControllers();
+            services.ConfigureRepositoryManager();
             services.ConfigureLoggerService();
             services.ConfigureSqlContext(Configuration);
+            services.AddControllers();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

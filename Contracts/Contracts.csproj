@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICompanyRepository.cs" />
+    <Compile Include="IEmployeeRepository.cs" />
     <Compile Include="IloggerManager.cs" />
     <Compile Include="IRepositoryBase.cs" />
+    <Compile Include="IRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using LoggerService;
+using Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,8 @@ namespace CompanyEmployee.Extensions
             services.AddDbContext<RepositoryContext>(opts =>
             opts.UseMySql(configuration.GetConnectionString("SqlConnection"), b => b.MigrationsAssembly("CompanyEmployee")));
 
-
+        public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+            services.AddScoped<IRepositoryManager,IRepositoryManager>();
     }
 
     

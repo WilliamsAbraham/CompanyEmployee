@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{D5C141BD-E6EB-4014-AEBF-DE7F64A6F475}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{18F1718A-9BE2-403B-B3CC-D17658A7A28B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8373B44C-F5D0-463D-A9D2-5B600710D176} = {8373B44C-F5D0-463D-A9D2-5B600710D176}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{C0B9E4AD-985E-4CF5-A0A9-E2E53F19CDB2}"
 	ProjectSection(ProjectDependencies) = postProject

@@ -35,7 +35,7 @@ namespace CompanyEmployee.Extensions
             opts.UseMySql(configuration.GetConnectionString("SqlConnection"), b => b.MigrationsAssembly("CompanyEmployee")));
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
-            services.AddScoped<IRepositoryManager,IRepositoryManager>();
+            services.AddScoped<IRepositoryManager,RepositoryManager>();
     }
 
     

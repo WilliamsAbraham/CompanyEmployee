@@ -25,9 +25,6 @@ namespace Repository
             !TrackChanges ? RepositoryContext.Set<T>()
                 .AsNoTracking() : RepositoryContext.Set<T>();
 
-
-
-
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool TrackChanges) =>
             !TrackChanges ? RepositoryContext.Set<T>()
             .Where(expression)
@@ -44,8 +41,11 @@ namespace Repository
         }
         public void Delete(T entity)
         {
+
             RepositoryContext.Set<T>().Remove(entity);
         }
+
+      
 
     }
 }

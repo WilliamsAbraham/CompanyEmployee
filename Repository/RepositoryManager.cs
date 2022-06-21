@@ -10,31 +10,23 @@ namespace Repository
 {
     public class RepositoryManager : IRepositoryManager
     {
-        private ICompanyRepository _companyRepository;
-        private IEmployeeRepository _employeeRepository;
+        private Lazy<ICompanyRepository> _lazycompanyRepository;
+        private Lazy<IEmployeeRepository> _employeeRepository;
         private RepositoryContext _repositoryContext;
 
         public RepositoryManager (RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
+            _lazycompanyRepository = new Lazy<ICompanyRepository> (() => new CompanyRepository(_repositoryContext));
+            _employeeRepository = new Lazy<IEmployeeRepository> (() => new EmployeeRepository(_repositoryContext));
         }
-        public ICompanyRepository CompanyRepository 
-                {  get
-                    {
-                        if (_companyRepository == null)
-                            _companyRepository = new CompanyRepository(_repositoryContext);
-                        return _companyRepository;
-                    }
 
-                }
+
+        public ICompanyRepository CompanyRepository => _lazycompanyRepository.Value;
+                
 
         public IEmployeeRepository EmployeeRepository 
-        { get 
-            { if(_employeeRepository == null) 
-                    _employeeRepository = new EmployeeRepository(_repositoryContext);
-                return _employeeRepository; 
-              }
-        }
+        => _employeeRepository.Value;
 
         public void Save()
         {

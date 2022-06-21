@@ -17,6 +17,9 @@ namespace Entities.Models
         [MaxLength(60, ErrorMessage = "Max. Length is 60")]
         public string Name { get; set; }
 
+        [DataType(DataType.PhoneNumber)]
+        public int Phone { get; set; }
+
         [Required(ErrorMessage ="Age is Requird")]
         public int Age { get; set; }    
 

@@ -13,6 +13,7 @@ namespace Repository
     {
         public CompanyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
+
         }
     }
 }

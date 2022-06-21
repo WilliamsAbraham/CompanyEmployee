@@ -25,8 +25,7 @@ namespace Repository
         public ICompanyRepository CompanyRepository => _lazycompanyRepository.Value;
                 
 
-        public IEmployeeRepository EmployeeRepository 
-        => _employeeRepository.Value;
+        public IEmployeeRepository EmployeeRepository => _employeeRepository.Value;
 
         public void Save()
         {

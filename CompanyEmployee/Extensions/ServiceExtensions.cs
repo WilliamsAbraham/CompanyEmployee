@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Entities;
+using Entities.RepositoryContracts;
 
 namespace CompanyEmployee.Extensions
 {

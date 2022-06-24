@@ -19,8 +19,8 @@
     },
     "CompanyEmployee": {
       "commandName": "Project",
-      "launchBrowser": false,
-      "launchUrl": "weatherforecast",
+      "launchBrowser": true,
+      "launchUrl": "api/Companies",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

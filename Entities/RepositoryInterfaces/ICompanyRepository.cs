@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 
 
-namespace Entities.RepositoryContracts
+namespace Entities.RepositoryInterfaces
 {
     public interface ICompanyRepository
     {
-        //IEnumerable<Company> GetAllCompanies(bool trackChanges);
+        IEnumerable<Company> GetAllCompanies(bool trackChanges);
     }
 }

@@ -5,15 +5,15 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.RepositoryContracts
+namespace Entities.RepositoryInterfaces
 {
-    public interface IRepositoryBase<T> 
+    public interface IRepositoryBase<T>
     {
         IQueryable<T> FindAll(bool TrackChanges);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool TrackChanges);
-        void Create (T entity);
-        void Update (T entity);
-        void Delete (T entity);
+        void Create(T entity);
+        void Update(T entity);
+        void Delete(T entity);
 
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Contracts;
 using Entities;
-using Entities.RepositoryContracts;
+using Entities.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

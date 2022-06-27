@@ -30,6 +30,7 @@ namespace CompanyEmployee
             services.ConfigureLoggerService();
             services.ConfigureSqlContext(Configuration);
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
             
         }
 

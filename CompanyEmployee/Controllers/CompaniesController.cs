@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using AutoMapper;
+
+using System.Collections.Generic;
 
 namespace CompanyEmployee.Controllers
 {
@@ -14,10 +17,12 @@ namespace CompanyEmployee.Controllers
     {
         private readonly IRepositoryManager _repository;
         private readonly IloggerManager _logger;
-        public CompaniesController(IRepositoryManager repository, IloggerManager logger)
+        private readonly IMapper _mapper;
+        public CompaniesController(IRepositoryManager repository, IloggerManager logger, IMapper mapper)
         {
             _logger =  logger;
             _repository = repository;
+            _mapper = mapper;
 
         }
 
@@ -28,14 +33,8 @@ namespace CompanyEmployee.Controllers
             {
                 var Companies = _repository.CompanyRepository.GetAllCompanies(trackChanges: false);
 
-                var CompanyResponse = Companies.Select(c => new CompanyResponse()
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    FullAdress = string.Join(' ', c.Address, c.Country)
-
-
-                }).ToList();
+                var CompanyResponse = _mapper.Map<IEnumerable<CompanyResponse>>(Companies);
+                
 
                 return Ok(CompanyResponse);
             }

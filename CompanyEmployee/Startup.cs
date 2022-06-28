@@ -7,6 +7,10 @@ using NLog;
 using CompanyEmployee.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.IO;
+using Contracts;
+using System.Net;
+using Microsoft.AspNetCore.Diagnostics;
+using CompanyEmployee.CustomExceptionMiddleware;
 
 namespace CompanyEmployee
 {
@@ -35,17 +39,21 @@ namespace CompanyEmployee
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+          
             }
             else
             {
                 app.UseHsts();
             }
+            //app.ConfigureExceptionHandler(logger);
 
+            app.ConfigureCustomExceptionMiddleware();
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCors("CorsPolicy");
@@ -55,6 +63,7 @@ namespace CompanyEmployee
                 ForwardedHeaders = ForwardedHeaders.All
             }) ;
 
+            
             app.UseRouting();
 
             app.UseAuthorization();

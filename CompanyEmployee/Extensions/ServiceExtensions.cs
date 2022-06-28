@@ -28,7 +28,7 @@ namespace CompanyEmployee.Extensions
          });
 
         public static void ConfigureLoggerService(this IServiceCollection services) =>
-            services.AddScoped<IloggerManager,LoggerManager>();
+            services.AddScoped<ILoggerManager,LoggerManager>();
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>

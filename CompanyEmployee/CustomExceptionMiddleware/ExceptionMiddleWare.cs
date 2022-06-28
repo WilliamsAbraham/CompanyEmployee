@@ -10,15 +10,15 @@ namespace CompanyEmployee.CustomExceptionMiddleware
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILoggerManager _logger;
+       // private readonly ILoggerManager _logger;
 
-        public ExceptionMiddleware(RequestDelegate next, ILoggerManager logger)
+        public ExceptionMiddleware(RequestDelegate next)
         {
-            _logger = logger;
-            _next = next;
+           //_logger = logger;
+           _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext)
+        public async Task InvokeAsync(HttpContext httpContext, ILoggerManager logger)
         {
             try
             {
@@ -26,12 +26,12 @@ namespace CompanyEmployee.CustomExceptionMiddleware
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong: {ex}");
-                await HandleExceptionAsync(httpContext, ex);
+                logger.LogError($"Something went wrong: {ex}");
+                await HandleExceptionAsync(httpContext);
             }
         }
 
-        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private async Task HandleExceptionAsync(HttpContext context)
         {
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

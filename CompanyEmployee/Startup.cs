@@ -50,10 +50,10 @@ namespace CompanyEmployee
             {
                 app.UseHsts();
             }
-            //app.ConfigureExceptionHandler(logger);
+            app.ConfigureExceptionHandler(logger);
 
-            app.ConfigureCustomExceptionMiddleware();
-            app.UseMiddleware<ExceptionMiddleware>();
+            //app.ConfigureCustomExceptionMiddleware();
+           // app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCors("CorsPolicy");

@@ -50,7 +50,7 @@ namespace CompanyEmployee
             {
                 app.UseHsts();
             }
-            app.ConfigureExceptionHandler(logger);
+           // app.ConfigureExceptionHandler(logger);
 
             //app.ConfigureCustomExceptionMiddleware();
            // app.UseMiddleware<ExceptionMiddleware>();

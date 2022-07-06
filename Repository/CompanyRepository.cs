@@ -19,9 +19,16 @@ namespace Repository
 
         public IEnumerable<Company> GetAllCompanies(bool trackChanges) 
         {
-            //throw new Exception("Something went wrong");
+            
             return
             FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+
+        }
+
+        public Company GetCompany(Guid CompanyId, bool trackChanges) 
+        {
+            return
+            FindByCondition(c => c.Id.Equals(CompanyId), trackChanges).SingleOrDefault();
 
         }
     }

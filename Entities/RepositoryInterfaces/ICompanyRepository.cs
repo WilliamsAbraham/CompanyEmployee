@@ -13,5 +13,6 @@ namespace Entities.RepositoryInterfaces
     {
       
         IEnumerable<Company> GetAllCompanies(bool trackChanges);
+        Company GetCompany(Guid id, bool trackChanges);
     }
 }

@@ -16,13 +16,14 @@ namespace CompanyEmployee.Controllers
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
-        //private readonly ILoggerManager _logger;
+        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public CompaniesController(IRepositoryManager repository, IMapper mapper)
+        public CompaniesController(IRepositoryManager repository, IMapper mapper, ILoggerManager logger)
         {
           
             _repository = repository;
             _mapper = mapper;
+            _logger = logger;
               
 
         }
@@ -31,21 +32,28 @@ namespace CompanyEmployee.Controllers
         public IActionResult GetCompanies ()
         {
             
-
             var Companies = _repository.CompanyRepository.GetAllCompanies(trackChanges: false);
-
-
-
 
             var CompanyResponse = _mapper.Map<IEnumerable<CompanyResponse>>(Companies);
 
+           return Ok(CompanyResponse);
 
-            throw new Exception("something went wrong");
-           
+        }
+        [HttpGet("{Id}")]
+        public IActionResult GetComapnyById ( Guid Id)
+        {
+            var Company = _repository.CompanyRepository.GetCompany(Id, trackChanges: false);
 
-           // return Ok(CompanyResponse);
-
-
+            if (Company == null)
+            {
+                _logger.LogInfo($"Company with the company ID: {Id} does not exist");
+                return NotFound();
+            }
+            else
+            {
+                var CompanyResponse = _mapper.Map<CompanyResponse>(Company);
+                return Ok(CompanyResponse);
+            }
         }
 
     }

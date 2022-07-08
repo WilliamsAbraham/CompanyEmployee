@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Entities.RepositoryInterfaces;
+using System;
 
 namespace CompanyEmployee.Extensions
 {
@@ -32,7 +33,7 @@ namespace CompanyEmployee.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>
-            opts.UseMySql(configuration.GetConnectionString("SqlConnection"), b => b.MigrationsAssembly("CompanyEmployee")));
+            opts.UseMySql(configuration.GetConnectionString("SqlConnection"), new MySqlServerVersion(new Version(8, 0, 11)), b => b.MigrationsAssembly("CompanyEmployee")));
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager,RepositoryManager>();
